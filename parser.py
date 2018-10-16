@@ -20,8 +20,7 @@ import operator
 log_url = 'https://s3.amazonaws.com/tcmg476/http_access_log'
 local_log_file = Path("logfile.txt")
 
-# Retrieve File (below). I have already downloaded it :) add a conditional to check for logfile.txt so we don't have to get it every time.
-# urllib.request.urlretrieve(log_url, 'logfile.txt')
+# Retrieve File
 if local_log_file.is_file():
 	#file exists
 	print("Log file exists!\n")
@@ -138,22 +137,11 @@ for line in open(local_log_file):
 			else:
 				num_files[filename] = 1
 	#dictionary needs to be sorted == num_files
-# for loop thru num_files if count is 1, i+=1
-	#for j in num_files:
-	#	if bool(re.match('.*, [1]',num_files)):
-	#		leastcount += 1
-	#	else:
-	#		...
-
-
-
+	
 #sort dictionary outside of loop
 sort_files = sorted(num_files.items(),key = operator.itemgetter(1),reverse = True)
 
 # Print Statements
-#print("Dictionary Test", num_files, "\n") #test dict
-#print(sort_files)
-
 print("length of numfiles", len(num_files))
 
 week = count/52
@@ -183,8 +171,3 @@ print("This is an example of a file requested only once:",sort_files[12176],"\n"
 
 print("Total unsuccessful attempts: ",xx4)
 print("Total requests that were redirected: ",xx3,"\n")
-
-
-
-
-
